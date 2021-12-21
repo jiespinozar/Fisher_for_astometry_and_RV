@@ -200,6 +200,8 @@ def Fisher_only_astrometry(t, t_0, q, a, d, P, e, M_0, w, O, cosi,s_fov):
 def Cov(F):
     return np.linalg.inv(F)
 
+#To obtain the uncertainties using astrometry and RV
+
 def get_unc_rv(t_rv, t_astro, t_0, q, a, d, P, e, M_0, w, O, cosi, sigma_rv,sigma_fov):
     sigma_rv = (sigma_rv*u.m/u.s).to(u.AU/u.yr).value	
     fish = Fisher_for_RV(t_rv, t_0, q, a, d, P, e, M_0, w, O, cosi, sigma_rv)+Fisher_for_astrometry(t_astro, t_0, q, a, d, P, e, M_0, w, O, cosi,sigma_fov)
@@ -209,6 +211,8 @@ def get_unc_rv(t_rv, t_astro, t_0, q, a, d, P, e, M_0, w, O, cosi, sigma_rv,sigm
     for i in range(len(cov)):
         dct[params[i]] = np.sqrt(cov[i][i])
     return dct
+
+#To obtain the uncertainties using only astrometry
 
 def get_unc_only_astrometry(t, t_0, q, a, d, P, e, M_0, w, O, cosi, sigma_fov):
     fish = Fisher_only_astrometry(t, t_0, q, a, d, P, e, M_0, w, O, cosi, sigma_fov)
