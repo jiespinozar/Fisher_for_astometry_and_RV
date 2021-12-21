@@ -20,4 +20,5 @@ cosi = np.cos(np.pi/4.0)				                    #Cosine of orbital inclination
 print(FTG.get_unc_only_astrometry(t_astro, t_0, q, a, d, P, e, M_0, w, O, cosi, sigma_fov)["cosi_err"])
 print(FTG.get_unc_rv(t_rv, t_astro,t_0, q, a, d, P, e, M_0, w, O, cosi, sigma_rv, sigma_fov)["cosi_err"])
 
-#This should print 0.026432019415863598 and 0.02117574913575701, which are the uncertainties in the cosine of the orbital inclination for this system.
+#This should print 0.026432019415863598 and 0.02117574913575701, which are the uncertainties in the cosine of the orbital inclination for this system calculated
+#using only astrometry and astrometry+RV respectively.
